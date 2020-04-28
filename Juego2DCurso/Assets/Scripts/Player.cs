@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	public GameObject attackOriginal;
+	public GameObject attackPosition;
+
 	private bool jumping;
+	private bool attacking;
+
 	private int life;
 	void Start () {
+		jumping = false;
+		attacking = false;
 		life = 3;
 	}
 	
@@ -14,12 +21,12 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
 		{
-			transform.Translate(new Vector3(-0.1f,0.0f));
+			transform.Translate(new Vector3(-0.2f,0.0f));
 		}
 
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			transform.Translate(new Vector3(0.1f, 0.0f));
+			transform.Translate(new Vector3(0.2f, 0.0f));
 		}
 
 		if (Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.W))
@@ -30,6 +37,23 @@ public class Player : MonoBehaviour {
 				jumping = true;
 			}
 		}
+		//Instancia el objeto de ataque en la posicion de ataque establecida
+		//Se crea un delay usando el booleano attacking y el metodo Invoke para ejecutar el metodo StopAttacking tras un retraso
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if(attacking == false)
+			{
+				GameObject.Instantiate(attackOriginal, attackPosition.transform.position, attackPosition.transform.rotation);
+				attacking = true;
+				Invoke("StopAttacking", 0.5f);
+			}
+			
+		}
+	}
+
+	private void StopAttacking()
+	{
+		attacking = false;
 	}
 
 	//Solo cuando el jugador vuelve a colisionar con el suelo se le vuelve a permitir saltar
