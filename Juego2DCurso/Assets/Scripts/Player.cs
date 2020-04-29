@@ -9,12 +9,14 @@ public class Player : MonoBehaviour {
 
 	private bool jumping;
 	private bool attacking;
+	private int coins;
 
 	private int life;
 	void Start () {
 		jumping = false;
 		attacking = false;
 		life = 3;
+		coins = 0;
 	}
 	
 	// Se programa el movimiento en las distintas teclas
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour {
 		{
 			transform.Translate(new Vector3(-0.2f,0.0f));
 		}
-
+		else
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			transform.Translate(new Vector3(0.2f, 0.0f));
@@ -74,7 +76,36 @@ public class Player : MonoBehaviour {
 			{
 				Debug.Log("El jugador ha muerto");
 				gameObject.SetActive(false);
+				//Almacena permanentemente la puntuación máxima entre partidas
+				int lastRecord = PlayerPrefs.GetInt("Coins");
+				if (PlayerPrefs.HasKey("Coins")==false)
+				{
+					//No hay record guardado
+					PlayerPrefs.SetInt("Coins", coins);
+					Debug.Log("NEW RECORD! " + coins);
+				}
+				else
+				{
+					//Si hay record guardado
+					if (lastRecord < coins)
+					{
+						PlayerPrefs.SetInt("Coins", coins);
+						Debug.Log("NEW RECORD! "+coins);
+					}
+				}
+				
 			}
+		}
+	}
+	//Controla la recogida de monedas y la puntuacion
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.tag == "Pickup")
+		{
+			col.gameObject.SetActive(false);
+			Destroy(col.gameObject, 0.5f);
+			coins++;
+			Debug.Log("Coins: " + coins);
 		}
 	}
 }
