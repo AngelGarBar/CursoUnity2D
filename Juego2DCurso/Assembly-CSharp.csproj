@@ -58,7 +58,9 @@
      <Compile Include="Assets\Scripts\EnemyGeneration.cs" />
      <Compile Include="Assets\Scripts\GroundSlider.cs" />
      <Compile Include="Assets\Scripts\GroundSlider2.cs" />
+     <Compile Include="Assets\Scripts\ParallaxEffect.cs" />
      <Compile Include="Assets\Scripts\PickupGenerator.cs" />
+     <Compile Include="Assets\Scripts\PlatformGenerator.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.4.39f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>

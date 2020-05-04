@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 		{
 			if(jumping == false)
 			{
-				GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 300.0f));
+				GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 500.0f));
 				jumping = true;
 			}
 		}
