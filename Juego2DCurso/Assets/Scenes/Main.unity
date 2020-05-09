@@ -396,6 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 232714265}
   - component: {fileID: 232714266}
+  - component: {fileID: 232714267}
   m_Layer: 8
   m_Name: P_Sprite
   m_TagString: Untagged
@@ -460,6 +461,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!95 &232714267
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232714264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40cf07a055314fc4cad05a368d22b322, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &235589925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,18 +1575,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.108141065, y: -1.6490757}
+  m_Offset: {x: -0.46869957, y: -1.6490757}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 15.3, y: 10.48}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 15.3, y: 10.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.6123526, y: 2.902873}
+  m_Size: {x: 2.8912356, y: 2.902873}
   m_EdgeRadius: 0
 --- !u!4 &1673235331
 Transform:
@@ -1599,6 +1617,7 @@ MonoBehaviour:
   attackOriginal: {fileID: 1653271141526994, guid: 54e377339c2dcb84e89ad00628c6c82b,
     type: 2}
   attackPosition: {fileID: 2038802937}
+  animador: {fileID: 232714267}
 --- !u!1 &1781876157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,8 +1847,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038802937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.172, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.56, y: -2.46, z: 0}
+  m_LocalScale: {x: 1.2875, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1673235331}
   m_RootOrder: 0

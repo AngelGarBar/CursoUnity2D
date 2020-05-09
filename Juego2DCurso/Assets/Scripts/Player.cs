@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	public GameObject attackOriginal;
 	public GameObject attackPosition;
 
+	public Animator animador;
+
 	private bool jumping;
 	private bool attacking;
 	private int coins;
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour {
 			{
 				GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 500.0f));
 				jumping = true;
+				animador.SetBool("Jumping", jumping);
+				
 			}
 		}
 		//Instancia el objeto de ataque en la posicion de ataque establecida
@@ -47,6 +51,7 @@ public class Player : MonoBehaviour {
 			{
 				GameObject.Instantiate(attackOriginal, attackPosition.transform.position, attackPosition.transform.rotation);
 				attacking = true;
+				animador.SetTrigger("Attacking");
 				Invoke("StopAttacking", 0.5f);
 			}
 			
@@ -65,6 +70,7 @@ public class Player : MonoBehaviour {
 		if(col.gameObject.tag == "Ground")
 		{
 			jumping = false;
+			animador.SetBool("Jumping", jumping);
 		}
 
 		if(col.gameObject.tag == "Enemy")
@@ -72,10 +78,12 @@ public class Player : MonoBehaviour {
 			col.gameObject.SetActive(false);
 			Destroy(col.gameObject,0.5f);
 			life--;
+			animador.SetTrigger("Damaged");
 			if (life <= 0)
 			{
 				Debug.Log("El jugador ha muerto");
-				gameObject.SetActive(false);
+				//gameObject.SetActive(false);
+				animador.SetBool("Dead", true);
 				//Almacena permanentemente la puntuación máxima entre partidas
 				int lastRecord = PlayerPrefs.GetInt("Coins");
 				if (PlayerPrefs.HasKey("Coins")==false)

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114577519736736566}
   - component: {fileID: 50249800206930696}
   - component: {fileID: 61381006288691540}
+  - component: {fileID: 95779215091531168}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1603598767912118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.21, y: 0.1, z: 0}
+  m_LocalPosition: {x: 3.539808, y: -1.4167113, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,6 +89,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1402984, y: 0.6705402}
   m_EdgeRadius: 0
+--- !u!95 &95779215091531168
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603598767912118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86c842b46050c414ca358fe3c13b8a99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114577519736736566
 MonoBehaviour:
   m_ObjectHideFlags: 1
