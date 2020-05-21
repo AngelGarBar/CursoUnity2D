@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyDeletion.cs" />
      <Compile Include="Assets\Scripts\EnemyGeneration.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GroundSlider.cs" />
      <Compile Include="Assets\Scripts\GroundSlider2.cs" />
      <Compile Include="Assets\Scripts\ParallaxEffect.cs" />

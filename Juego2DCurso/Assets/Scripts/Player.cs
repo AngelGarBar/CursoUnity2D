@@ -11,9 +11,21 @@ public class Player : MonoBehaviour {
 
 	private bool jumping;
 	private bool attacking;
-	private int coins;
+	private bool movingLeft;
+	private bool movingRight;
 
+	private int coins;
+	public int Coins
+	{
+		get { return coins; }
+		set { coins = value; }
+	}
 	private int life;
+	public int Life {
+		get { return life;}
+		set { life = value;}
+	}
+
 	void Start () {
 		jumping = false;
 		attacking = false;
@@ -23,38 +35,26 @@ public class Player : MonoBehaviour {
 	
 	// Se programa el movimiento en las distintas teclas
 	void Update () {
-		if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
+		if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow)|| movingLeft)
 		{
 			transform.Translate(new Vector3(-0.2f,0.0f));
 		}
 		else
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)||movingRight)
 		{
 			transform.Translate(new Vector3(0.2f, 0.0f));
 		}
 
 		if (Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.W))
 		{
-			if(jumping == false)
-			{
-				GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 500.0f));
-				jumping = true;
-				animador.SetBool("Jumping", jumping);
-				
-			}
+			Jump();
 		}
 		//Instancia el objeto de ataque en la posicion de ataque establecida
 		//Se crea un delay usando el booleano attacking y el metodo Invoke para ejecutar el metodo StopAttacking tras un retraso
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if(attacking == false)
-			{
-				GameObject.Instantiate(attackOriginal, attackPosition.transform.position, attackPosition.transform.rotation);
-				attacking = true;
-				animador.SetTrigger("Attacking");
-				Invoke("StopAttacking", 0.5f);
-			}
-			
+
+			Attack();
 		}
 	}
 
@@ -115,5 +115,37 @@ public class Player : MonoBehaviour {
 			coins++;
 			Debug.Log("Coins: " + coins);
 		}
+	}
+
+	public void Jump()
+	{
+		if (jumping == false)
+		{
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 500.0f));
+			jumping = true;
+			animador.SetBool("Jumping", jumping);
+
+		}
+	}
+
+	public void Attack()
+	{
+		if (attacking == false)
+		{
+			GameObject.Instantiate(attackOriginal, attackPosition.transform.position, attackPosition.transform.rotation);
+			attacking = true;
+			animador.SetTrigger("Attacking");
+			Invoke("StopAttacking", 0.5f);
+		}
+	}
+
+	public void MoveRight(bool _activate)
+	{
+		movingRight = _activate;
+	}
+
+	public void MoveLeft(bool _activate)
+	{
+		movingLeft = _activate;
 	}
 }
